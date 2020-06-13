@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32f5858a-fa8c-4fa2-a4f7-faed1fd506dd" name="Default Changelist" comment="" />
+    <list default="true" id="32f5858a-fa8c-4fa2-a4f7-faed1fd506dd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wonder_mouth/core.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/wonder_mouth/core.clj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1cviOLuEebWkIQfMiwlwXuHAZ9m" />
   <component name="ProjectViewState">
@@ -15,11 +22,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="ReplState" timestamp="1591509093579">{:repl-history {:ide [], :local [], :remote []}}</component>
+  <component name="ReplState" timestamp="1592030972001">{:repl-history {:ide [], :local [{:command &quot;(defn primeMod\n  [x]\n  (loop [n x counted 0]\n    (if (&lt; n 1)\n      counted\n      (if (= 0 (mod x n))\n        (recur (dec n) (inc counted))\n        (recur (dec n) counted)))))&quot;, :offset 174, :ns &quot;wonder-mouth.core&quot;} {:command &quot;(defn prime?\n  [x]\n  (true? (= 2 (primeMod x))\n         ))&quot;, :offset 58, :ns &quot;wonder-mouth.core&quot;} {:command &quot;(def fibLazy                                                ;;returns lazy seq of all fibo numbers\n  ((fn fib [a b]\n     (lazy-seq (cons a (fib b (+ a b)))))\n   0 1))&quot;, :offset 166, :ns &quot;wonder-mouth.core&quot;} {:command &quot;(def fiboNums (into [] (take 25 fibLazy)))    &quot;, :offset 46, :ns &quot;wonder-mouth.core&quot;} {:command &quot;(defn fibo?                                                 ;; check if fibo in first 25\n  [x]\n  (loop [i 0]\n    (if (= x (get fiboNums i))\n      true\n      (if (= 25 i)\n        false\n        (recur (inc i))))))&quot;, :offset 211, :ns &quot;wonder-mouth.core&quot;} {:command &quot;(defn chenMod                                               ;;returns [[modList] modCount] of x+2\n  [x]\n  (loop [n (+ x 2) mods [] countMod 0]\n    (if (&gt; 1 n)\n      [mods countMod]\n      (if (= 0 (mod (+ 2 x) n))\n        (recur (dec n) (conj mods n) (inc countMod))\n        (recur (dec n) mods countMod)))))&quot;, :offset 307, :ns &quot;wonder-mouth.core&quot;} {:command &quot;(defn chen?                                                 ;; Checks if chen (p prime, p+2 prime or semi-prime)\n  [x]\n  (if (and (prime? x) (prime? (+ x 2)))\n    true\n    (if (and (prime? x)\n             (or (and (prime? (nth (first (chenMod x)) 1)) (= 3 (last (chenMod x))))\n                 (and (prime? (nth (first (chenMod x)) 1)) (prime? (nth (first (chenMod x)) 2)) (= 4 (last (chenMod x))))))\n      true\n      false)\n    ))&quot;, :offset 431, :ns &quot;wonder-mouth.core&quot;} {:command &quot;(defn inp []                                                ;;input n\n  (println \&quot;Enter n\&quot;)\n  (let [input (read)]\n    input))&quot;, :offset 125, :ns &quot;wonder-mouth.core&quot;} {:command &quot;(defn wonder_mouth                                          ;;creates output string\n  [input]\n  (loop [n input output \&quot;\&quot;]\n    (if (= 0 n)\n      output\n      (if (and (fibo? n) (chen? n))\n        (recur (dec n) (str \&quot;OO\&quot; output))\n        (if (and (fibo? n) (prime? n))\n          (recur (dec n) (str \&quot;Oo\&quot; output))\n          (if (prime? n)\n            (recur (dec n) (str \&quot;o\&quot; output))\n            (if (fibo? n)\n              (recur (dec n) (str \&quot;O\&quot; output))\n              (recur (dec n) output))))))))&quot;, :offset 498, :ns &quot;wonder-mouth.core&quot;} {:command &quot;(def input (inp))&quot;, :offset 17, :ns &quot;wonder-mouth.core&quot;} {:command &quot;(wonder_mouth input)&quot;, :offset 20, :ns &quot;wonder-mouth.core&quot;} {:command &quot;(prime? 1)&quot;, :offset 10, :ns &quot;wonder-mouth.core&quot;}], :remote []}}</component>
   <component name="RunManager">
     <configuration default="true" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
       <setting name="replType" value="NREPL" />
@@ -64,6 +72,10 @@
       <option name="presentableId" value="Default" />
       <updated>1591415434720</updated>
       <workItem from="1591415442238" duration="26008000" />
+      <workItem from="1591517735155" duration="5374000" />
+      <workItem from="1591726577537" duration="595000" />
+      <workItem from="1591957210677" duration="2555000" />
+      <workItem from="1592024812783" duration="2758000" />
     </task>
     <servers />
   </component>
@@ -75,9 +87,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591415526742" />
-    <state x="611" y="225" width="696" height="678" key="search.everywhere.popup" timestamp="1591468519997">
+    <state x="611" y="225" width="696" height="678" key="search.everywhere.popup" timestamp="1592025141676">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="611" y="225" width="696" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591468519997" />
+    <state x="611" y="225" width="696" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592025141676" />
   </component>
 </project>

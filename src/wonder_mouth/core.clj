@@ -14,13 +14,12 @@
       (if (= 0 (mod x n))
         (recur (dec n) (inc counted))
         (recur (dec n) counted)))))
-(primeMod 10)
 ;;-------
-(defn prime?
+(defn prime?                                                ;;true?
   [x]
   (true? (= 2 (primeMod x))
          ))
-(prime? 21)
+
 ;;////////////////////////////////
 (def fibLazy                                                ;;returns lazy seq of all fibo numbers
   ((fn fib [a b]
@@ -38,7 +37,6 @@
         false
         (recur (inc i))))))
 
-(fibo? 100)
 ;;//////////////////////////////
 (defn chenMod                                               ;;returns [[modList] modCount] of x+2
   [x]
@@ -49,32 +47,22 @@
         (recur (dec n) (conj mods n) (inc countMod))
         (recur (dec n) mods countMod)))))
 
-(chenMod 7)
 ;;--------------
 (defn chen?                                                 ;; Checks if chen (p prime, p+2 prime or semi-prime)
   [x]
-  (if (and (prime? x) (prime? (+ x 2)))
-    true
-    (if (and (prime? x)
-             (or (and (prime? (nth (first (chenMod x)) 1)) (= 3 (last (chenMod x))))
-                 (and (prime? (nth (first (chenMod x)) 1)) (prime? (nth (first (chenMod x)) 2)) (= 4 (last (chenMod x))))))
-      true
-      false)
-    ))
-(chen? 13)
+  (true? (or (and (prime? x) (prime? (+ x 2)))
+             (and (prime? x)
+                  (or (and (prime? (nth (first (chenMod x)) 1))
+                           (= 3 (last (chenMod x))))
+                      (and (prime? (nth (first (chenMod x)) 1))
+                           (prime? (nth (first (chenMod x)) 2))
+                           (= 4 (last (chenMod x)))))))))
 
 ;;/////////////////////////////////
-(defn inp []                                                ;;input n
-  (println "Enter n")
-  (let [input (read)]
-    input))
-
-(def input (inp))
-;;////////////////////////////////
 (defn wonder_mouth                                          ;;creates output string
   [input]
   (loop [n input output ""]
-    (if (= 0 n)
+    (if (= 0 n)                                             ;;reduce
       output
       (if (and (fibo? n) (chen? n))
         (recur (dec n) (str "OO" output))
@@ -85,5 +73,6 @@
             (if (fibo? n)
               (recur (dec n) (str "O" output))
               (recur (dec n) output))))))))
-(wonder_mouth input)
-(prime? 1)
+
+(wonder_mouth 10)
+
